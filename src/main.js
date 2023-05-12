@@ -1,5 +1,6 @@
 function getParam(name, url) {
     if (!url) url = window.location.href;
+    console.log(url);
     name = name.replace(/[\[\]]/g, "\\$&");
     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
         results = regex.exec(url);
@@ -10,7 +11,7 @@ function getParam(name, url) {
 
 function loadAPI(){
     const user = getParam('user');
-    fetch(`https://sokujiapi.onrender.com/user/${user}`)
+    fetch(`https://mariokart-c27da-default-rtdb.firebaseio.com/user/${user}.json`)
     .then(r=>{return r.json()})
     .then(data => update(data));
     return 0;
